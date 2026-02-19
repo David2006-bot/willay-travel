@@ -1,5 +1,7 @@
 ---
 const { pathname } = Astro.url;
+const normalizePath = (path: string) => path.replace(/^\/|\/$/g, '');
+const currentPath = normalizePath(pathname);
 const activeClass = "text-[#006080] border-b-2 border-[#006080]";
 const inactiveClass = "text-white hover:text-[#006080] border-b border-white/5";
 const imagenes = [
@@ -60,28 +62,28 @@ const imagenes = [
         <li>
           <a
             href="/Inicio"
-            class={`block py-4 ${pathname === "/Inicio" ? activeClass : inactiveClass} text-xl md:text-base md:border-0`}
+            class={`block py-4 ${currentPath === "Inicio" ? activeClass : inactiveClass} text-xl md:text-base md:border-0`}
             >Inicio</a
           >
         </li>
         <li>
           <a
             href="/Nosotros"
-            class={`block py-4 ${pathname === "/Nosotros" ? activeClass : inactiveClass} text-xl md:text-base md:border-0`}
+            class={`block py-4 ${currentPath === "Nosotros" ? activeClass : inactiveClass} text-xl md:text-base md:border-0`}
             >Nosotros</a
           >
         </li>
         <li>
           <a
             href="/Paquetes"
-            class={`block py-4 ${pathname === "/paquetes" ? activeClass : inactiveClass} text-xl md:text-base md:border-0`}
+            class={`block py-4 ${currentPath === "Paquetes" ? activeClass : inactiveClass} text-xl md:text-base md:border-0`}
             >Paquetes</a
           >
         </li>
         <li>
           <a
             href="/Contacto"
-            class={`block py-4 ${pathname === "/Contacto" ? activeClass : inactiveClass} text-xl md:text-base md:border-0`}
+            class={`block py-4 ${currentPath === "Contacto" ? activeClass : inactiveClass} text-xl md:text-base md:border-0`}
             >Contacto</a
           >
         </li>
