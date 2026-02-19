@@ -1,0 +1,136 @@
+---
+// src/pages/nosotros.astro
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Nosotros - Willay Travel">
+  <section class="relative min-h-screen py-20 px-6 overflow-hidden bg-white">
+    <img
+      src="/img/lineas-de-nazca-mono.png"
+      class="absolute top-10 left-5 w-32 md:w-64 opacity-5 -rotate-12 pointer-events-none z-0"
+      alt=""
+    />
+    <img
+      src="/img/lineas-de-nazca-mono.png"
+      class="absolute bottom-10 right-5 w-40 md:w-80 opacity-5 rotate-12 pointer-events-none z-0"
+      alt=""
+    />
+
+    <div
+      class="absolute right-[-10%] top-[-10%] w-[600px] h-[600px] bg-[#268E94] rounded-full opacity-5 blur-3xl z-0"
+    >
+    </div>
+
+    <div class="max-w-screen-xl mx-auto relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+        <div class="text-left">
+          <h1
+            class="text-5xl md:text-7xl font-serif text-[#33568C] leading-tight mb-6"
+          >
+            Creamos <span class="text-[#268E94]">experiencias</span> de viaje excepcionales.
+          </h1>
+          <p class="text-lg text-gray-600 mb-8 max-w-lg">
+            Más de 5 años conectando viajeros con la magia de Ica y el Perú.
+            Garantizamos tu aventura de principio a fin.
+          </p>
+          <a
+            href="/Paquetes"
+            class="inline-block  hover:text-white bg-[#E2C092] text-[#33568C] px-8 py-4 rounded-xl font-bold shadow-xl hover:bg-[#33568C] transition-all"
+          >
+            Explorar Paquetes
+          </a>
+        </div>
+
+        <div class="relative">
+          <div
+            class="relative rounded-[40%_60%_70%_30%/40%_50%_60%_40%] overflow-hidden shadow-2xl border-8 border-white"
+          >
+            <img
+              src="/img/huacachina_amigos_universidad.jpeg"
+              alt="Aventura en Ica"
+              class="w-full h-[400px] md:h-[500px] object-cover"
+            />
+          </div>
+          <div
+            class="absolute -bottom-6 left-0 md:-left-6 bg-white p-4 rounded-2xl shadow-2xl flex items-center gap-4 animate-bounce-slow"
+          >
+            <div class="bg-green-100 p-2 rounded-full text-green-600">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                ><path
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                ></path></svg
+              >
+            </div>
+            <div class="text-left">
+              <p class="text-sm font-bold text-gray-800">Sello de Calidad</p>
+              <p class="text-xs text-gray-500">Certificados por SERNATUR</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-4xl mx-auto text-center mt-20 relative">
+        <img 
+        src="/img/lineas-de-nazca-mono.png" 
+        class="absolute top-0 right-[-7%] w-32 md:w-48 opacity-5 rotate-12 pointer-events-none z-0" 
+        alt="" 
+        />
+        <h2 class="text-4xl font-serif text-[#268E94] mb-6">
+          ¿Por qué Nosotros?
+        </h2>
+        <p class="text-gray-700 leading-relaxed italic text-lg">
+          En Willay Travel, somos especialistas en diseñar experiencias
+          turísticas únicas e inolvidables. Operamos como agencia y operador
+          directo, con nuestra propia flota de buses y un equipo experto.
+          Estamos orgullosos de contar con el registro oficial ante SERNATUR.
+          Visítanos en San Agustín MZ "Z" Lt 4, Chincha Alta.
+        </p>
+      </div>
+      <img src="/img/paracas_playa_roja.jpeg" alt="Atardecer en Huacachina" 
+      class="mt-8 mx-auto w-full max-w-2xl" width="500" height="100"/>
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 border-t border-gray-100 pt-10"
+      >
+        <div class="text-center">
+          <span class="block text-[#268E94] text-3xl font-bold">+5</span>
+          <p class="text-xs uppercase tracking-widest text-gray-500 mt-2">
+            Años de experiencia
+          </p>
+        </div>
+        <div class="text-center">
+          <span class="block text-[#268E94] text-3xl font-bold">100%</span>
+          <p class="text-xs uppercase tracking-widest text-gray-500 mt-2">
+            Operador Directo
+          </p>
+        </div>
+        <div class="text-center">
+          <span class="block text-[#268E94] text-3xl font-bold">Flota</span>
+          <p class="text-xs uppercase tracking-widest text-gray-500 mt-2">
+            Propia de Buses
+          </p>
+        </div>
+        <div class="text-center">
+          <span class="block text-[#268E94] text-3xl font-bold">Legal</span>
+          <p class="text-xs uppercase tracking-widest text-gray-500 mt-2">
+            Sello SERNATUR
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes bounce-slow {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    .animate-bounce-slow {
+      animation: bounce-slow 4s ease-in-out infinite;
+    }
+  </style>
+</Layout>

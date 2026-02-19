@@ -1,0 +1,126 @@
+---
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+
+const imagenes = [
+  "/img/huacachina_amigos_universidad.jpeg",
+  "/img/paracas_playa_roja.jpeg",
+  "/img/restaurante_ica_huacachina.jpeg",
+];
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout title="Willay Travel - Inicio">
+  <section
+    class="relative h-[80vh] w-full overflow-hidden flex items-center justify-center"
+  >
+    <div id="hero-slider" class="absolute inset-0 z-0">
+      {
+        imagenes.map((img, index) => (
+          <img
+            src={img}
+            alt="Destinos Willay Travel"
+            class={`hero-img absolute inset-0 w-full h-full object-cover transition-transform duration-[5000ms] ease-linear 
+        ${index === 0 ? "opacity-100 scale-100" : "opacity-0 scale-100"}`}
+          />
+        ))
+      }
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-4">
+      <h1
+        class="text-white text-4xl md:text-6xl mb-4 drop-shadow-lg font-serif"
+      >
+        Tours a Huacachina desde Lima
+      </h1>
+      <p
+        class="text-white text-xl md:text-2xl font-light drop-shadow-md font-serif"
+      >
+        Vive la aventura en las dunas de Ica
+      </p>
+      <a
+        href="/Paquetes"
+        class="inline-block hover:text-white bg-[#E2C092] text-[#33568C] px-8 py-4 rounded-xl font-bold shadow-xl hover:bg-[#33568C] transition-all mt-6"
+      >
+        Explorar Paquetes
+      </a>
+    </div>
+  </section>
+
+  <!-- En esta parte estamos añadiendo informacion despues del carrousel -->
+  <div class="flex flex-col max-w-screen-xl mx-auto px-4">
+    <div class="text-center py-8 relative">
+      <h2 class="text-3xl md:text-5xl font-serif text-[#33568C]">
+        Paquetes especiales
+      </h2>
+      <img 
+        src="/img/lineas-de-nazca-pajaro.png" 
+        class="absolute top-0 right-30 w-32 md:w-48 opacity-5 rotate-12 pointer-events-none z-0" 
+        alt="" 
+        />
+      <h3 class="text-md md:text-md font-serif text-[#268E94] mt-4">
+        Pequeñas vacaciones, grandes experiencias
+      </h3>
+      <p class="mt-4 text-gray-700 max-w-2xl mx-auto">
+        Descubre los mejores tours a Huacachina desde Lima y otros destinos en
+        Perú.
+      </p>
+    </div>
+<!-- 
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
+      <div
+        class="group overflow-hidden rounded-2xl shadow-lg bg-white transition-transform hover:scale-105"
+      >
+        <div class="h-64 overflow-hidden">
+          <img
+            src="/img/paracas_playa_roja.jpeg"
+            alt="Paracas"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-[#268E94]">Paracas & Playa Roja</h3>
+          <p class="text-gray-600 mt-2 text-sm">
+            Explora la reserva nacional y sus paisajes únicos.
+          </p>
+          <button class="mt-4 text-[#33568C] font-semibold hover:underline"
+            >Ver más →</button
+          >
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <script>
+    import "flowbite";
+    const images = document.querySelectorAll(".hero-img");
+    let currentIndex = 0;
+
+    function nextImage() {
+      const prevImg = images[currentIndex];
+      currentIndex = (currentIndex + 1) % images.length;
+      const nextImg = images[currentIndex];
+
+      // 1. QUITAMOS la imagen anterior al instante
+      prevImg.classList.remove("opacity-100", "scale-110");
+      prevImg.classList.add("opacity-0", "scale-100");
+
+      // 2. PONEMOS la nueva imagen al instante (aparece de frente al 100%)
+      nextImg.classList.replace("opacity-0", "opacity-100");
+
+      // 3. INICIAMOS el zoom un momento después
+      // Esto evita que la imagen aparezca ya crecida
+      setTimeout(() => {
+        nextImg.classList.add("scale-110");
+      }, 20);
+    }
+
+    // Primera imagen al cargar
+    setTimeout(() => {
+      images[0].classList.add("scale-110");
+    }, 100);
+
+    setInterval(nextImage, 5000);
+  </script>
+</Layout>
