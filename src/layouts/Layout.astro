@@ -1,12 +1,12 @@
 ---
 // 1. Importamos Tailwind v4
-import '../styles/global.css';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
 // 2. Definimos que el título pueda cambiar según la página
 interface Props {
-	title?: string;
+  title?: string;
 }
 
 const { title = "Willay Travel - Hotel & Tours" } = Astro.props;
@@ -14,16 +14,96 @@ const { title = "Willay Travel - Hotel & Tours" } = Astro.props;
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="m-0 w-full h-full font-sans antialiased text-gray-900 bg-white">
-		<Navbar />
-		<slot />
-		<Footer />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="m-0 w-full h-full font-sans antialiased text-gray-900 bg-white">
+    <Navbar />
+    <slot />
+    <a
+      href="https://wa.me/tunúmero?text=Hola"
+      target="_blank"
+      class="btn-whatsapp"
+    >
+      <img src="/img/whatsapp.png" width="50" height="50" alt="WhatsApp" />
+    </a>
+	<Footer/>
+  </body>
 </html>
+<style is:global>
+@keyframes inflarGlobo {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    60% {
+      transform: scale(1.15);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .btn-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    opacity: 0; 
+    animation-name: inflarGlobo;
+    animation-duration: 0.9s;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation-delay: 1.1s;
+    animation-fill-mode: forwards; 
+  }
+
+  /* .btn-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: entradaSuave 1s ease-out forwards;
+    transition: transform 0.3s ease;
+  } */
+
+  /* El globo de texto (oculto por defecto) */
+  .btn-whatsapp::before {
+    content: "¡Escríbenos!"; /* Texto del mensaje */
+    position: absolute;
+    right: 60px; /* Se posiciona a la izquierda del icono */
+    background-color: #25d366; /* Verde WhatsApp */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px 20px 0 20px; /* Bordes redondeados con estilo de chat */
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  /* Le damos un pequeño movimiento al aparecer */
+  .btn-whatsapp:hover::before {
+    opacity: 1;
+    visibility: visible;
+    right: 65px;
+  }
+
+  /* icono de wsp */
+  .btn-whatsapp img {
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+  }
+</style>
